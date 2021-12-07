@@ -1,7 +1,6 @@
 from os import remove, walk
 from os.path import splitext
 from time import sleep
-import configparser
 
 
 class AutoRemoveFileByExtension:
@@ -55,6 +54,7 @@ class AutoRemoveFileByExtension:
 
 
 if __name__ == '__main__':
+    import configparser
     obj = AutoRemoveFileByExtension()
     config = configparser.ConfigParser()
     config.read("setting.ini")
