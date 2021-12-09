@@ -43,20 +43,23 @@ class AutoRemoveFileByExtension:
                         break
                     file_extension = splitext(filename)[-1]
                     file_pull_path = f"{path}\\{filename}"
-                    if remove_file_extension == "*":
-                        print(file_pull_path)
-                        if remove_file == "true":
-                            remove(file_pull_path)
-                    elif file_extension == remove_file_extension:
-                        print(file_pull_path)
-                        if remove_file == "true":
-                            remove(file_pull_path)
+                    try:
+                        if remove_file_extension == "*":
+                            print(file_pull_path)
+                            if remove_file == "true":
+                                remove(file_pull_path)
+                        elif file_extension == remove_file_extension:
+                            print(file_pull_path)
+                            if remove_file == "true":
+                                remove(file_pull_path)
+                    except Exception as e:
+                        print(f"\t파일 삭제 실패 : {file_pull_path} --- {e.__cause__} ")
 
 
 if __name__ == '__main__':
-    import configparser
+    from configparser import ConfigParser
     obj = AutoRemoveFileByExtension()
-    config = configparser.ConfigParser()
+    config = ConfigParser()
     config.read("setting.ini")
 
     obj.search(
