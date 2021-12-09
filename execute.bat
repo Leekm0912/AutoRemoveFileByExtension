@@ -1,0 +1,2 @@
+python ./AutoRemoveFileByExtension.py
+pause
